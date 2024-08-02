@@ -1,5 +1,7 @@
 import React from 'react';
-import { Image, SafeAreaView, View, StyleSheet } from 'react-native';
+import { Image, View, StyleSheet } from 'react-native';
+
+import colors from '../config/colors';
 
 function ViewImageScreen(props) {
   return (
@@ -20,7 +22,7 @@ function ViewImageScreen(props) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#000',
+    backgroundColor: colors.black,
   },
   iconContainer: {
     flexDirection: 'row',
@@ -29,7 +31,7 @@ const styles = StyleSheet.create({
   closeIcon: {
     width: 50,
     height: 50,
-    backgroundColor: '#fc5c65',
+    backgroundColor: colors.primary,
     position: 'absolute',
     top: 40,
     left: 30,
@@ -37,7 +39,7 @@ const styles = StyleSheet.create({
   deleteIcon: {
     width: 50,
     height: 50,
-    backgroundColor: '#4ECDC4',
+    backgroundColor: colors.secondary,
     position: 'absolute',
     top: 40,
     right: 30,
