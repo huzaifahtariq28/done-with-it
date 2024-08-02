@@ -1,16 +1,9 @@
-import { View, StyleSheet } from 'react-native';
+import React from 'react';
 
-import AppButton from './app/components/AppButton';
+import ViewImageScreen from './app/screens/ViewImageScreen';
 import WelcomeScreen from './app/screens/WelcomeScreen';
+import ListingDetailsScreen from './app/screens/ListingDetailsScreen';
 
 export default function App() {
-  return <WelcomeScreen />;
+  return <ListingDetailsScreen />;
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
