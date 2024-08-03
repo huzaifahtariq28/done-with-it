@@ -4,6 +4,7 @@ import * as Yup from 'yup';
 
 import Screen from '../components/Screen';
 import { AppForm, AppFormField, SubmitButton } from '../components/forms';
+import routes from '../navigation/routes';
 
 const validationSchema = Yup.object().shape({
   name: Yup.string().required().min(1).label('Name'),
@@ -17,12 +18,12 @@ const validationSchema = Yup.object().shape({
     .label('Password'),
 });
 
-function RegisterScreen(props) {
+function RegisterScreen({ navigation }) {
   return (
     <Screen style={styles.container}>
       <AppForm
         initialValues={{ name: '', email: '', password: '' }}
-        onSubmit={(values) => console.log(values)}
+        onSubmit={(values) => navigation.navigate(routes.LOGIN)}
         validationSchema={validationSchema}
       >
         <AppFormField
