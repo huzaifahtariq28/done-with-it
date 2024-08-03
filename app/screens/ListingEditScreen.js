@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { StyleSheet } from 'react-native';
 import * as Yup from 'yup';
+import * as Location from 'expo-location';
 
 import Screen from '../components/Screen';
 import {
@@ -10,12 +11,15 @@ import {
   SubmitButton,
 } from '../components/forms';
 import CategoryPickerItem from '../components/CategoryPickerItem';
+import AppFormImagePicker from '../components/forms/AppFormImagePicker';
+import useLocation from '../hooks/useLocation';
 
 const validationSchema = Yup.object().shape({
   title: Yup.string().required().min(1).label('Title'),
   price: Yup.number().required().min(1).max(10000).label('Price'),
   category: Yup.object().nullable().required().label('Category'),
   description: Yup.string().optional().label('Description'),
+  images: Yup.array().min(1, 'Please select atleast one image'),
 });
 
 const categories = [
@@ -64,6 +68,8 @@ const categories = [
 ];
 
 function ListingEditScreen(props) {
+  const location = useLocation();
+
   return (
     <Screen style={styles.container}>
       <AppForm
@@ -72,10 +78,12 @@ function ListingEditScreen(props) {
           price: '',
           category: null,
           description: '',
+          images: [],
         }}
-        onSubmit={(values) => console.log(values)}
+        onSubmit={(values) => console.log(location)}
         validationSchema={validationSchema}
       >
+        <AppFormImagePicker name='images' />
         <AppFormField
           placeholder='Title'
           maxLength={255}
@@ -95,7 +103,7 @@ function ListingEditScreen(props) {
           items={categories}
           numberOfColumns={3}
           placeholder='Categories'
-          name='categories'
+          name='category'
           width='50%'
           PickerItemComponent={CategoryPickerItem}
         />
