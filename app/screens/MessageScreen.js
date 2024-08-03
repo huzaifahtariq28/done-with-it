@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FlatList, StyleSheet } from 'react-native';
+import { FlatList } from 'react-native';
 
 import Screen from '../components/Screen';
 import {
@@ -45,6 +45,7 @@ function MessageScreen(props) {
             renderRightActions={() => (
               <ListItemDeleteAction onPress={() => handleDelete(item)} />
             )}
+            showChevron
           />
         )}
         ItemSeparatorComponent={ListItemSeparator}
@@ -54,7 +55,5 @@ function MessageScreen(props) {
     </Screen>
   );
 }
-
-const styles = StyleSheet.create({});
 
 export default MessageScreen;
