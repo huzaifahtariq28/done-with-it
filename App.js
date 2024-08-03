@@ -9,9 +9,5 @@ import AccountScreen from './app/screens/AccountScreen';
 import ListingScreen from './app/screens/ListingScreen';
 
 export default function App() {
-  return (
-    <GestureHandlerRootView style={{ flex: 1 }}>
-      <ListingScreen />
-    </GestureHandlerRootView>
-  );
+  return <GestureHandlerRootView style={{ flex: 1 }}></GestureHandlerRootView>;
 }
