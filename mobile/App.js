@@ -5,10 +5,12 @@ import { NavigationContainer } from '@react-navigation/native';
 import navigationTheme from './app/navigation/navigationTheme';
 import AuthNavigator from './app/navigation/AuthNavigator';
 import AppNavigator from './app/navigation/AppNavigator';
+import OfflineNotice from './app/components/OfflineNotice';
 
 export default function App() {
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
+      <OfflineNotice />
       <NavigationContainer theme={navigationTheme}>
         {/* <AuthNavigator /> */}
         <AppNavigator />
