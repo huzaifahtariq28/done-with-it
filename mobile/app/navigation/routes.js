@@ -7,5 +7,6 @@ export default Object.freeze({
   LISTING_DETAILS: 'ListingDetails',
   LISTINGS_EDIT: 'ListingsEdit',
   ACCOUNT: 'Account',
+  MY_ACCOUNT: 'MyAccount',
   MESSAGES: 'Messages',
 });

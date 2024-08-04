@@ -99,8 +99,7 @@ function ListingEditScreen(props) {
       return alert('Could not save the listing.');
     }
 
-    // alert('Successfully added listing');
-    // resetForm();
+    resetForm();
   };
 
   return (

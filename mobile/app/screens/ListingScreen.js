@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { FlatList, StyleSheet } from 'react-native';
+import { FlatList, Platform, StyleSheet } from 'react-native';
 
 import Screen from '../components/Screen';
 import Card from '../components/Card';
@@ -24,35 +24,37 @@ function ListingScreen({ navigation }) {
   }, []);
 
   return (
-    <Screen style={styles.screen}>
-      {error && (
-        <>
-          <AppText>Couldn't retrieve the listings.</AppText>
-          <AppButton title='Retry' onPress={loadListings} />
-        </>
-      )}
+    <>
       <AppActivityIndicator visible={loading} />
-      <FlatList
-        data={listings}
-        keyExtractor={(listing) => listing.id.toString()}
-        renderItem={({ item }) => (
-          <Card
-            title={item.title}
-            subTitle={'$' + item.price}
-            imageUrl={item.images[0].url}
-            thumbnailUrl={item.images[0].thumbnailUrl}
-            onPress={() => navigation.navigate(routes.LISTING_DETAILS, item)}
-          />
+      <Screen style={styles.screen}>
+        {error && (
+          <>
+            <AppText>Couldn't retrieve the listings.</AppText>
+            <AppButton title='Retry' onPress={loadListings} />
+          </>
         )}
-        showsVerticalScrollIndicator={false}
-      />
-    </Screen>
+        <FlatList
+          data={listings}
+          keyExtractor={(listing) => listing.id.toString()}
+          renderItem={({ item }) => (
+            <Card
+              title={item.title}
+              subTitle={'$' + item.price}
+              imageUrl={item.images[0].url}
+              thumbnailUrl={item.images[0].thumbnailUrl}
+              onPress={() => navigation.navigate(routes.LISTING_DETAILS, item)}
+            />
+          )}
+          showsVerticalScrollIndicator={false}
+        />
+      </Screen>
+    </>
   );
 }
 
 const styles = StyleSheet.create({
   screen: {
-    padding: 20,
+    padding: Platform.OS === 'android' ? 10 : 20,
     backgroundColor: colors.light,
   },
 });
