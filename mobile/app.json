@@ -1,7 +1,8 @@
 {
   "expo": {
-    "name": "done-with-it",
+    "name": "Done With It",
     "slug": "done-with-it",
+    "description": "'Done With It' is a user-friendly marketplace app that allows you to easily list items for sale and connect with potential buyers. Whether you're looking to declutter your home or find great deals, 'Done With It' makes buying and selling simple and convenient.",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./app/assets/icon.png",
@@ -12,19 +13,43 @@
       "backgroundColor": "#e63c4b"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "buildIdentified": "com.huzaifahtariq.donewithit"
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./app/assets/adaptive-icon.png",
+        "foregroundImage": "./app/assets/icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.huzaifahtariq.donewithit"
     },
     "web": {
-      "favicon": "./app/assets/favicon.png"
+      "favicon": "./app/assets/icon.png"
     },
     "plugins": [
       "expo-secure-store"
-    ]
+    ],
+    "extra": {
+      "bugsnag": {
+        "apiKey": "85d79406b0e31b7092b988d52eba8e34"
+      },
+      "eas": {
+        "projectId": "90094509-e8f2-4e2d-a978-9de03aecdc6a"
+      }
+    },
+    "hooks": {
+      "postPublish": [
+        {
+          "file": "@bugsnag/expo/hooks/post-publish.js",
+          "config": {}
+        }
+      ]
+    },
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/90094509-e8f2-4e2d-a978-9de03aecdc6a"
+    }
   }
 }

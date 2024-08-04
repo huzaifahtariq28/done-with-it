@@ -14,6 +14,7 @@ import AppFormImagePicker from '../components/forms/AppFormImagePicker';
 import useLocation from '../hooks/useLocation';
 import listingsApi from '../api/listings';
 import UploadScreen from './UploadScreen';
+import logger from '../utility/logger';
 
 const validationSchema = Yup.object().shape({
   title: Yup.string().required().min(1).label('Title'),
@@ -91,7 +92,7 @@ function ListingEditScreen(props) {
 
     const result = await listingsApi.addListing(
       { ...listing, location },
-      (progress) => console.log(progress)
+      (progress) => logger.log(progress)
     );
 
     if (!result.ok) {

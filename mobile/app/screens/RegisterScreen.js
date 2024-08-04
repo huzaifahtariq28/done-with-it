@@ -14,6 +14,7 @@ import authApi from '../api/auth';
 import useAuth from '../auth/useAuth';
 import useApi from '../hooks/useApi';
 import AppActivityIndicator from '../components/AppActivityIndicator';
+import logger from '../utility/logger';
 
 const validationSchema = Yup.object().shape({
   name: Yup.string().required().min(1).label('Name'),
@@ -40,7 +41,7 @@ function RegisterScreen({ navigation }) {
       if (result.data) setError(result.data.error);
       else {
         setError('An unexpected error occurred.');
-        console.log(result);
+        logger.log(result);
       }
       return;
     }
